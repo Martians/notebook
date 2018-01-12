@@ -95,9 +95,13 @@ docker-compose unpause
 
 ### 状态
 docker-compose events
+
 docker-compose logs
+
 docker-compose top
+
 docker-compose ps
+
 docker-compose config：检查配置，并展开宏
 
     1. 执行的命令，当前必须处在compose.yaml文件夹下
