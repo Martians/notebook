@@ -1,0 +1,770 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>compose · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="../hadoop/Hive/Hive-03-Schema.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../Hive">
+            
+                <span>
+            
+                    
+                    Hive
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../hadoop/Hive/Hive-01-Concept.html">
+            
+                <a href="../hadoop/Hive/Hive-01-Concept.html">
+            
+                    
+                    Concept
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../hadoop/Hive/Hive-02-Usage.html">
+            
+                <a href="../hadoop/Hive/Hive-02-Usage.html">
+            
+                    
+                    Usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../hadoop/Hive/Hive-03-Schema.html">
+            
+                <a href="../hadoop/Hive/Hive-03-Schema.html">
+            
+                    
+                    Schema
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter active" data-level="3.1" data-path="compose.html">
+            
+                <a href="compose.html">
+            
+                    
+                    compose
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >compose</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>[TOC]
+<!-- TOC --></p>
+<ul>
+<li><a href="#%E5%8A%9F%E8%83%BD">&#x529F;&#x80FD;</a><ul>
+<li><a href="#%E7%89%B9%E7%82%B9">&#x7279;&#x70B9;</a></li>
+<li><a href="#%E5%9C%BA%E6%99%AF">&#x573A;&#x666F;</a></li>
+</ul>
+</li>
+<li><a href="#%E5%91%BD%E4%BB%A4">&#x547D;&#x4EE4;</a><ul>
+<li><a href="#%E7%94%A8%E6%B3%95">&#x7528;&#x6CD5;</a><ul>
+<li><a href="#%E8%AF%B4%E6%98%8E">&#x8BF4;&#x660E;</a></li>
+<li><a href="#%E5%B8%B8%E8%A7%81">&#x5E38;&#x89C1;</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AE%89%E8%A3%85">&#x5B89;&#x88C5;</a></li>
+<li><a href="#%E5%91%BD%E4%BB%A4">&#x547D;&#x4EE4;</a><ul>
+<li><a href="#%E5%90%AF%E5%8A%A8">&#x542F;&#x52A8;</a></li>
+<li><a href="#%E5%85%B3%E9%97%AD">&#x5173;&#x95ED;</a></li>
+<li><a href="#%E7%8A%B6%E6%80%81">&#x72B6;&#x6001;</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E9%85%8D%E7%BD%AE">&#x914D;&#x7F6E;</a><ul>
+<li><a href="#%E6%9E%84%E5%BB%BA">&#x6784;&#x5EFA;</a><ul>
+<li><a href="#build">build</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96">&#x5176;&#x4ED6;</a></li>
+</ul>
+</li>
+<li><a href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F">&#x73AF;&#x5883;&#x53D8;&#x91CF;</a><ul>
+<li><a href="#configs">configs</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86">&#x670D;&#x52A1;&#x7BA1;&#x7406;</a></li>
+<li><a href="#%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3">&#x7CFB;&#x7EDF;&#x76F8;&#x5173;</a></li>
+<li><a href="#swarm%E7%9B%B8%E5%85%B3">swarm&#x76F8;&#x5173;</a><ul>
+<li><a href="#deploy">deploy</a></li>
+</ul>
+</li>
+<li><a href="#network">Network</a><ul>
+<li><a href="#service">Service</a></li>
+</ul>
+</li>
+<li><a href="#top-level-network">Top-level network</a><ul>
+<li><a href="#%E9%BB%98%E8%AE%A4%E7%BD%91%E7%BB%9C">&#x9ED8;&#x8BA4;&#x7F51;&#x7EDC;</a></li>
+<li><a href="#%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE">&#x7F51;&#x7EDC;&#x914D;&#x7F6E;</a></li>
+</ul>
+</li>
+<li><a href="#volumes">volumes</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h1 id="&#x529F;&#x80FD;">&#x529F;&#x80FD;</h1>
+<h2 id="&#x7279;&#x70B9;">&#x7279;&#x70B9;</h2>
+<ul>
+<li>&#x4E00;&#x4E2A;&#x673A;&#x5668;&#x4E0A;&#x542F;&#x52A8;&#x591A;&#x4E2A;&#x5BB9;&#x5668;&#xFF0C;&#x7EDF;&#x4E00;&#x7BA1;&#x7406;</li>
+<li>&#x4E0E;dockerfile&#x914D;&#x5408;&#x4F7F;&#x7528;&#xFF0C;&#x8986;&#x76D6;&#x3001;&#x4FEE;&#x6539;&#x5176;&#x4E2D;&#x7684;&#x914D;&#x7F6E;</li>
+<li>Stream the log output of running services </li>
+<li>&#x4F7F;&#x7528;&#x5916;&#x90E8;&#x5B9A;&#x4E49;&#x7684;&#x5B8F;</li>
+</ul>
+<h2 id="&#x573A;&#x666F;">&#x573A;&#x666F;</h2>
+<h1 id="&#x547D;&#x4EE4;">&#x547D;&#x4EE4;</h1>
+<h2 id="&#x7528;&#x6CD5;">&#x7528;&#x6CD5;</h2>
+<h3 id="&#x8BF4;&#x660E;">&#x8BF4;&#x660E;</h3>
+<ul>
+<li>DNS&#xFF0C;&#x4F7F;&#x7528;&#x540C;&#x4E00;&#x4E2A;&#x7F51;&#x7EDC;&#x7684;&#x5BB9;&#x5668;&#xFF0C;&#x53EF;&#x4EE5;&#x5F7C;&#x6B64;&#x95F4;&#x8BBF;&#x95EE;<ul>
+<li>&#x901A;&#x8FC7;service&#x540D;&#x5B57;&#x6765;&#x8BBF;&#x95EE;&#xFF1B;&#x901A;&#x8FC7; [project]_service_1 &#x8FD9;&#x4E2A;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x7684;&#x5BB9;&#x5668;&#x540D;&#x6765;&#x8BBF;&#x95EE;</li>
+<li>&#x914D;&#x7F6E;link&#x3001;external_link&#x6765;&#x8BBF;&#x95EE;</li>
+</ul>
+</li>
+</ul>
+<h3 id="&#x5E38;&#x89C1;">&#x5E38;&#x89C1;</h3>
+<ul>
+<li>&#x4FDD;&#x5B58;volume&#x6570;&#x636E;&#x5728;&#x5916;&#x8FB9;</li>
+</ul>
+<h2 id="&#x5B89;&#x88C5;">&#x5B89;&#x88C5;</h2>
+<p><a href="https://docs.docker.com/compose/install/" title="link" target="_blank">&#x5B98;&#x7F51;&#x5B89;&#x88C5;</a> </p>
+<pre><code>sudo curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+</code></pre><h2 id="&#x547D;&#x4EE4;">&#x547D;&#x4EE4;</h2>
+<h3 id="&#x542F;&#x52A8;">&#x542F;&#x52A8;</h3>
+<p>docker-compose up</p>
+<pre><code>1. &#x81EA;&#x52A8;&#x542F;&#x52A8;&#x914D;&#x7F6E;&#x7684;service&#xFF1B;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x67D0;&#x4E00;&#x4E2A;
+2. &#x542F;&#x52A8;&#x914D;&#x7F6E;&#x7684;&#x6240;&#x6709;docker&#xFF0C;&#x5DF2;&#x542F;&#x52A8;&#x5C31;&#x5FFD;&#x7565;
+2. &#x5982;&#x679C;&#x914D;&#x7F6E;&#x53D1;&#x751F;&#x6539;&#x53D8;&#xFF0C;&#x5C31;stop&#x5E76;start
+3. --scale SERVICE=NUM
+4. -d &#x540E;&#x53F0;&#x542F;&#x52A8;
+</code></pre><p>docker-compose run</p>
+<pre><code>1. &#x66FF;&#x6362;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x8FDB;&#x884C;
+1. &#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x4E2D;&#x7684;&#x7AEF;&#x53E3;&#x4E0D;&#x4F1A;&#x6620;&#x5C04;&#xFF0C;&#x9700;&#x8981;--service-ports&#xFF0C;&#x6216;&#x8005;&#x81EA;&#x884C;&#x6307;&#x5B9A;-p
+2. &#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x6267;&#x884C;&#x7528;&#x6237;&#x3001;&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;&#xFF1B;&#x78C1;&#x76D8;
+3. &#x9ED8;&#x8BA4;&#x4F1A;&#x542F;&#x52A8;service&#x76F8;&#x5173;&#x7684;link&#x7684;&#x5BB9;&#x5668;
+</code></pre><p>docker-compose build</p>
+<pre><code>1. &#x53EA;&#x8FDB;&#x884C;build
+</code></pre><h3 id="&#x5173;&#x95ED;">&#x5173;&#x95ED;</h3>
+<p>docker-compose down</p>
+<pre><code>1. --rmi type &#x5220;&#x9664;&#x914D;&#x7F6E;&#x4E2D;&#x76F8;&#x5173;&#x7684;&#x6240;&#x6709;images
+2. -v, &#x5220;&#x9664;&#x78C1;&#x76D8;
+2. --remove-orphans &#x5220;&#x9664;&#x5176;&#x4ED6;&#x6240;&#x6709;&#x5BB9;&#x5668;&#xFF0C;&#x9664;&#x4E86;&#x672C;&#x5730;&#x6307;&#x5B9A;&#x7684;
+</code></pre><p>docker-compose rm</p>
+<pre><code>1. &#x5220;&#x9664;&#x5DF2;&#x7ECF;&#x505C;&#x6B62;&#x7684;&#x5BB9;&#x5668;
+2. -s&#xFF0C;&#x5F3A;&#x5236;&#x5173;&#x95ED;
+2. -v&#xFF0C;&#x5220;&#x9664;&#x76F8;&#x5173;&#x7684;&#x6240;&#x6709;&#x65E0;&#x540D;volume
+3. &#x4E0D;&#x5220;&#x9664;&#x6807;&#x8BB0;&#x4E3A;externla&#x7684;&#x7F51;&#x8DEF;
+</code></pre><p>docker-compose pause
+docker-compose unpause</p>
+<h3 id="&#x72B6;&#x6001;">&#x72B6;&#x6001;</h3>
+<p>docker-compose events</p>
+<p>docker-compose logs</p>
+<p>docker-compose top</p>
+<p>docker-compose ps</p>
+<p>docker-compose config&#xFF1A;&#x68C0;&#x67E5;&#x914D;&#x7F6E;&#xFF0C;&#x5E76;&#x5C55;&#x5F00;&#x5B8F;</p>
+<pre><code>1. &#x6267;&#x884C;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x5F53;&#x524D;&#x5FC5;&#x987B;&#x5904;&#x5728;compose.yaml&#x6587;&#x4EF6;&#x5939;&#x4E0B;
+2. &#x8FD9;&#x4E9B;&#x547D;&#x4EE4;&#x90FD;&#x662F;&#x6309;&#x7167;&#x56FA;&#x5B9A;&#x7684;&#x683C;&#x5F0F;&#x53BB;&#x7BA1;&#x7406;&#x76F8;&#x5173;&#x7684;&#x5BB9;&#x5668;&#x540D;&#x79F0;&#xFF1B;&#x5982;&#x679C;&#x6539;&#x52A8;&#x4E86;&#x5DE5;&#x7A0B;&#x540D;&#xFF0C;&#x5FC5;&#x987B;&#x5728;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x4E2D;&#x66F4;&#x65B0;&#xFF0C;&#x5426;&#x5219;&#x8FD9;&#x4E9B;&#x547D;&#x4EE4;&#x65E0;&#x6CD5;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x5BB9;&#x5668;
+</code></pre><h1 id="&#x914D;&#x7F6E;">&#x914D;&#x7F6E;</h1>
+<p><a href="https://docs.docker.com/compose/compose-file" target="_blank">config</a></p>
+<h2 id="&#x6784;&#x5EFA;">&#x6784;&#x5EFA;</h2>
+<h3 id="build">build</h3>
+<ul>
+<li>context&#xFF1A;&#x6307;&#x5B9A;dockerfile&#x6587;&#x4EF6;&#x4F4D;&#x7F6E;</li>
+<li>dockerfile&#xFF1A;&#x6307;&#x5B9A;dockerfile&#x540D;&#x79F0;</li>
+<li><p>args&#xFF1A;&#x66F4;&#x65B0;dockerfile&#x4E2D;&#x7684;arg&#xFF1B;</p>
+<ul>
+<li>&#x7528;map&#x65B9;&#x5F0F;&#xFF08;password: secret&#xFF09;&#xFF1B;list&#x65B9;&#x5F0F;&#x90FD;&#x53EF;&#xFF08;- buildno=1&#xFF09;</li>
+<li><p>&#x53EF;&#x4EE5;&#x5199;&#x7A7A;&#x503C;&#xFF0C;&#x8FD0;&#x884C;&#x65F6;&#x8BFB;&#x53D6;&#x73AF;&#x5883;&#x53D8;&#x91CF;</p>
+<pre><code>build:
+context: .
+args:
+  buildno: 1
+  password: secret
+
+build:
+context: .
+args:
+  - buildno=1
+  - password=secret
+  - username
+</code></pre></li>
+</ul>
+</li>
+<li>shm_size</li>
+</ul>
+<h3 id="&#x5176;&#x4ED6;">&#x5176;&#x4ED6;</h3>
+<ul>
+<li>container&#x540D;&#x5B57;&#x4E0D;&#x7528;&#x6307;&#x5B9A;&#xFF0C;&#x5C31;&#x662F;[project]_service_1&#x7684;&#x540D;&#x5B57;<ul>
+<li>&#x5982;&#x679C;&#x5728;&#x5176;&#x4E2D;&#x6307;&#x5B9A;&#x4E86;service&#x5BF9;&#x5E94;&#x7684;&#x5BB9;&#x5668;&#x540D;&#xFF0C;&#x4F1A;&#x5BFC;&#x81F4;docker-compose logs&#x7B49;&#x547D;&#x4EE4;&#x65E0;&#x6CD5;&#x627E;&#x5230;&#x5BB9;&#x5668;<pre><code>namenode:
+env_file: ./config.sh
+image: &apos;uhopper/hadoop-namenode&apos;
+container_name: namenode
+#domainname: data.com
+hostname: namenode
+ports:
+  - &quot;8020:8020&quot;
+  - &apos;50070:50070&apos;
+volumes:
+  - $NAME_HOME:/hadoop/dfs/name
+environment:
+  - NOTHING
+</code></pre></li>
+</ul>
+</li>
+<li>command&#xFF1A;&#x8986;&#x76D6;&#x9ED8;&#x8BA4;&#x547D;&#x4EE4;</li>
+<li>entrypoint: /code/entrypoint.sh</li>
+<li>expose</li>
+<li>healthcheck<pre><code>  healthcheck:
+      test: [&quot;CMD&quot;, &quot;curl&quot;, &quot;-f&quot;, &quot;http://localhost&quot;]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+</code></pre></li>
+<li>&#x5176;&#x4ED6;
+```
+user: postgresql
+working_dir: /code</li>
+</ul>
+<p>domainname: foo.com
+hostname: foo
+ipc: host
+mac_address: 02:42:ac:11:65:43</p>
+<p>privileged: true</p>
+<p>read_only: true
+shm_size: 64M
+stdin_open: true
+tty: true</p>
+<pre><code>## &#x73AF;&#x5883;&#x53D8;&#x91CF;
+[&#x7F51;&#x4E0A;&#x4F8B;&#x5B50;](http://blog.csdn.net/ochinchina_cn/article/details/64125216)
+
+**&#x7279;&#x522B;&#x8BF4;&#x660E;**
+1. env_file&#x4E2D;&#x7684;&#x5B9A;&#x4E49;&#xFF0C;&#x9ED8;&#x8BA4;&#x5C31;&#x4F1A;&#x4F7F;&#x7528;.env&#x6587;&#x4EF6;&#xFF0C;&#x5176;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x5B8F;&#x53EF;&#x4EE5;&#x5728;yml&#x6587;&#x4EF6;&#x4E2D;&#x751F;&#x6548;
+2. env_file&#x4E2D;&#x7684;&#x5B9A;&#x4E49;&#xFF0C;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x5176;&#x4ED6;&#x6587;&#x4EF6;&#xFF0C;&#x53EA;&#x80FD;&#x5BF9;&#x5BB9;&#x5668;&#x4E2D;&#x751F;&#x6548;&#xFF0C;yml&#x65E0;&#x6CD5;&#x8BBF;&#x95EE;&#x5230;&#x8FD9;&#x4E9B;&#x5B8F;
+3. &#x5982;&#x679C;&#x5728;shell&#x4E2D;&#x5B9A;&#x4E49;&#xFF0C;&#x5FC5;&#x987B;&#x4F7F;&#x7528;export
+
+* env_file
+&#x9ED8;&#x8BA4;&#x8BBF;&#x95EE;.env&#x4E2D;&#x7684;&#x53D8;&#x91CF;
+</code></pre><p>env_file: .env</p>
+<p>env_file:</p>
+<ul>
+<li>./common.env</li>
+<li>./apps/web.env</li>
+<li>/opt/secrets.env<pre><code>* environment
+</code></pre>environment:
+RACK_ENV: development
+SHOW: &apos;true&apos;
+SESSION_SECRET:</li>
+</ul>
+<p>environment:</p>
+<ul>
+<li>RACK_ENV=development</li>
+<li>SHOW=true</li>
+<li>SESSION_SECRET
+```</li>
+</ul>
+<ol>
+<li>sheel &#x53D8;&#x91CF;</li>
+</ol>
+<h3 id="configs">configs</h3>
+<ol>
+<li>&#x5C06;config&#x5BF9;&#x5E94;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;mount&#x5230;&#x5BB9;&#x5668;&#x4E2D;&#xFF1B;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x5BF9;&#x8C61;&#x7684;&#x76EE;&#x6807;&#x4F4D;&#x7F6E;</li>
+</ol>
+<p>&#x7B80;&#x5199;&#x65B9;&#x5F0F;</p>
+<pre><code>version: &quot;3.1&quot;
+services:
+  redis:
+    image: redis:latest
+    deploy:
+      replicas: 1
+    secrets:
+      - my_secret
+      - my_other_secret
+secrets:
+  my_secret:
+    file: ./my_secret.txt
+  my_other_secret:
+    external: true
+</code></pre><ol>
+<li><p>&#x5916;&#x90E8;&#x8D44;&#x6E90;&#xFF0C;&#x9700;&#x8981;&#x7528;docker config create&#x8FDB;&#x884C;&#x914D;&#x7F6E;</p>
+<p> &#x5B8C;&#x6574;&#x65B9;&#x5F0F;</p>
+<pre><code>version: &quot;3.1&quot;
+services:
+redis:
+ image: redis:latest
+ deploy:
+   replicas: 1
+ secrets:
+   - source: my_secret
+     target: redis_secret
+     uid: &apos;103&apos;
+     gid: &apos;103&apos;
+     mode: 0440
+secrets:
+my_secret:
+ file: ./my_secret.txt
+my_other_secret:
+ external: true
+</code></pre></li>
+</ol>
+<h2 id="&#x670D;&#x52A1;&#x7BA1;&#x7406;">&#x670D;&#x52A1;&#x7BA1;&#x7406;</h2>
+<ol>
+<li><p>depends_on
+<a href="https://docs.docker.com/compose/startup-order/" target="_blank">start up order</a></p>
+<ol>
+<li>&#x53EA;&#x662F;&#x7B49;&#x5F85;&#x4F9D;&#x8D56;&#x5BB9;&#x5668;start&#x5B8C;&#x6BD5; <pre><code>version: &apos;3&apos;
+services:
+web:
+ build: .
+ depends_on:
+ - db
+ - redis
+redis:
+ image: redis
+db:
+ image: postgres
+</code></pre>isolation
+restart<pre><code>restart: &quot;no&quot;
+restart: always
+restart: on-failure
+restart: unless-stopped
+</code></pre></li>
+</ol>
+</li>
+</ol>
+<h2 id="&#x7CFB;&#x7EDF;&#x76F8;&#x5173;">&#x7CFB;&#x7EDF;&#x76F8;&#x5173;</h2>
+<ol>
+<li><p>logging</p>
+<pre><code> logging:
+ driver: syslog
+ options:
+     syslog-address: &quot;tcp://192.168.0.42:123&quot;
+</code></pre></li>
+<li><p>tmpfs</p>
+</li>
+<li>devices</li>
+<li>sysctls
+```
+sysctls:
+net.core.somaxconn: 1024
+net.ipv4.tcp_syncookies: 0</li>
+</ol>
+<p>sysctls:</p>
+<ul>
+<li>net.core.somaxconn=1024</li>
+<li>net.ipv4.tcp_syncookies=0
+```</li>
+</ul>
+<ol>
+<li><p>unilimt</p>
+<pre><code>ulimits:
+nproc: 65535
+nofile:
+ soft: 20000
+ hard: 40000
+</code></pre><h2 id="swarm&#x76F8;&#x5173;">swarm&#x76F8;&#x5173;</h2>
+<h3 id="deploy">deploy</h3>
+<ol>
+<li>ENDPOINT_MODE</li>
+<li>LABELS</li>
+<li>PLACEMENT</li>
+<li>REPLICAS</li>
+</ol>
+</li>
+</ol>
+<h2 id="network">Network</h2>
+<h3 id="service">Service</h3>
+<ol>
+<li><p>dns&#x3001;dns_search; &#x914D;&#x7F6E;&#x4E00;&#x4E2A;&#x6216;&#x8005;&#x591A;&#x4E2A;</p>
+<pre><code> dns_search: example.com
+ dns_search:
+ - dc1.example.com
+ - dc2.example.com
+</code></pre></li>
+<li><p>links: &#x8FDE;&#x63A5;&#x5230;&#x5176;&#x4ED6;service&#x7684;&#x5BB9;&#x5668;&#xFF0C;&#x5BF9;&#x9700;&#x8981;&#x8FDE;&#x63A5;&#x7684;&#x5BB9;&#x5668;&#xFF0C;&#x5B9A;&#x4E49;&#x7684;&#x989D;&#x5916;&#x522B;&#x540D;; </p>
+</li>
+<li>external_links&#xFF1A;link &#x672C;yaml&#x6587;&#x4EF6;&#x4E4B;&#x5916;&#x7684;&#x5BB9;&#x5668;&#xFF0C;&#x9488;&#x5BF9;&#x5171;&#x4EAB;&#x3001;&#x901A;&#x7528;&#x670D;&#x52A1;</li>
+</ol>
+<pre><code>dns_search: example.com
+dns_search:
+  - dc1.example.com
+  - dc2.example.com
+</code></pre><ol>
+<li><p>extra_hosts&#xFF1A;&#x6DFB;&#x52A0;&#x5230;/etc/hosts</p>
+<pre><code>extra_hosts:
+- &quot;somehost:162.242.195.82&quot;
+- &quot;otherhost:50.31.209.229&quot;
+</code></pre></li>
+<li><p>network_mode&#xFF1A;</p>
+</li>
+<li>networks&#xFF1A;&#x914D;&#x7F6E;service&#x4E0B;&#x7684;&#x7F51;&#x7EDC;&#xFF0C;Service-level <pre><code>services:
+some-service:
+ networks:
+  - some-network
+  - other-network
+</code></pre></li>
+<li>ALIASES&#xFF1A;&#x5F53;&#x524D;service&#x5728;&#x5BF9;&#x5E94;&#x7F51;&#x8DEF;&#x4E0B;&#x7684;&#x522B;&#x540D;</li>
+<li>IP</li>
+</ol>
+<pre><code>services:
+  app:
+    image: busybox
+    command: ifconfig
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.10
+        ipv6_address: 2001:3984:3989::10
+
+networks:
+  app_net:
+    driver: bridge
+    enable_ipv6: true
+    ipam:
+      driver: default
+      config:
+      -
+        subnet: 172.16.238.0/24
+      -
+        subnet: 2001:3984:3989::/64
+</code></pre><ol>
+<li>port<pre><code>ports:
+- &quot;3000&quot;
+- &quot;3000-3005&quot;
+- &quot;8000:8000&quot;
+- &quot;9090-9091:8080-8081&quot;
+- &quot;49100:22&quot;
+- &quot;127.0.0.1:8001:8001&quot;
+- &quot;127.0.0.1:5000-5010:5000-5010&quot;
+- &quot;6060:6060/udp&quot;
+</code></pre></li>
+</ol>
+<h2 id="top-level-network">Top-level network</h2>
+<p>   <a href="https://docs.docker.com/compose/networking/" target="_blank">network</a></p>
+<h3 id="&#x9ED8;&#x8BA4;&#x7F51;&#x7EDC;">&#x9ED8;&#x8BA4;&#x7F51;&#x7EDC;</h3>
+<ol>
+<li><p>&#x5B9A;&#x4E49;&#x5185;&#x90E8;&#x7F51;&#x7EDC;</p>
+<pre><code>networks:
+default:
+ # Use a custom driver
+ driver: custom-driver-1
+</code></pre></li>
+<li><p>&#x4F7F;&#x7528;&#x5DF2;&#x5B58;&#x5728;&#x7684;&#x5916;&#x90E8;&#x7F51;&#x7EDC;</p>
+<pre><code>networks:
+default:
+ external:
+   name: my-pre-existing-network
+</code></pre><h3 id="&#x7F51;&#x7EDC;&#x914D;&#x7F6E;">&#x7F51;&#x7EDC;&#x914D;&#x7F6E;</h3>
+</li>
+<li>ipam<pre><code>ipam:
+driver: default
+config:
+ - subnet: 172.28.0.0/16
+</code></pre></li>
+<li>external
+```
+version: &apos;2&apos;</li>
+</ol>
+<p>services:
+  proxy:
+    build: ./proxy
+    networks:</p>
+<pre><code>  - outside
+  - default
+</code></pre><p>  app:
+    build: ./app
+    networks:</p>
+<pre><code>  - default
+</code></pre><p>networks:
+  outside:
+    external: true</p>
+<pre><code>
+
+</code></pre><p>networks:
+  outside:
+    external:
+      name: actual-name-of-network</p>
+<pre><code>
+## volumes
+1. &#x591A;&#x4E2A;service&#x516C;&#x7528;&#x7684;&#x78C1;&#x76D8;&#xFF0C;&#x5C31;&#x4F7F;&#x7528;top-level&#x5B9A;&#x4E49;
+</code></pre><p>version: &quot;3.2&quot;
+services:
+  web:
+    image: nginx:alpine
+    volumes:</p>
+<pre><code>  - type: volume
+    source: mydata
+    target: /data
+    volume:
+      nocopy: true
+  - type: bind
+    source: ./static
+    target: /opt/app/static
+</code></pre><p>  db:
+    image: postgres:latest
+    volumes:</p>
+<pre><code>  - &quot;/var/run/postgres/postgres.sock:/var/run/postgres/postgres.sock&quot;
+  - &quot;dbdata:/var/lib/postgresql/data&quot;
+</code></pre><p>volumes:
+  mydata:
+  dbdata:
+```</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../hadoop/Hive/Hive-03-Schema.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Schema">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"compose","level":"3.1","depth":1,"previous":{"title":"Schema","level":"2.1.3","depth":2,"path":"hadoop/Hive/Hive-03-Schema.md","ref":"hadoop/Hive/Hive-03-Schema.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Docker/compose.md","mtime":"2018-01-12T07:53:11.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-12T09:04:25.207Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
