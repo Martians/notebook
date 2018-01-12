@@ -6,6 +6,8 @@
     - [场景](#%E5%9C%BA%E6%99%AF)
 - [命令](#%E5%91%BD%E4%BB%A4)
     - [用法](#%E7%94%A8%E6%B3%95)
+        - [说明](#%E8%AF%B4%E6%98%8E)
+        - [常见](#%E5%B8%B8%E8%A7%81)
     - [安装](#%E5%AE%89%E8%A3%85)
     - [命令](#%E5%91%BD%E4%BB%A4)
         - [启动](#%E5%90%AF%E5%8A%A8)
@@ -34,18 +36,20 @@
 * 一个机器上启动多个容器，统一管理
 * 与dockerfile配合使用，覆盖、修改其中的配置
 * Stream the log output of running services 
-* 使用外部宏
+* 使用外部定义的宏
 
 ## 场景
-在不同的环境中
-自动进行环境配置
-自动测试环境
-
 
 # 命令
 
 ## 用法
-保存volume数据在外边
+### 说明
+* DNS，使用同一个网络的容器，可以彼此间访问
+  * 通过service名字来访问；通过 [project]_service_1 这个自动生成的容器名来访问
+  * 配置link、external_link来访问
+
+### 常见
+* 保存volume数据在外边
 
 ## 安装 
 [官网安装](https://docs.docker.com/compose/install/ "link") 
@@ -105,6 +109,8 @@ docker-compose ps
 docker-compose config：检查配置，并展开宏
 
     1. 执行的命令，当前必须处在compose.yaml文件夹下
+    2. 这些命令都是按照固定的格式去管理相关的容器名称；如果改动了工程名，必须在环境变量中更新，否则这些命令无法找到对应的容器
+
 
 # 配置
 [config](https://docs.docker.com/compose/compose-file)
@@ -134,7 +140,23 @@ docker-compose config：检查配置，并展开宏
 
 ### 其他
 
-* container名字不用指定，就是service的名字
+* container名字不用指定，就是[project]_service_1的名字
+  * 如果在其中指定了service对应的容器名，会导致docker-compose logs等命令无法找到容器
+```
+namenode:
+    env_file: ./config.sh
+    image: 'uhopper/hadoop-namenode'
+    container_name: namenode
+    #domainname: data.com
+    hostname: namenode
+    ports:
+      - "8020:8020"
+      - '50070:50070'
+    volumes:
+      - $NAME_HOME:/hadoop/dfs/name
+    environment:
+      - NOTHING
+```
 * command：覆盖默认命令
 * entrypoint: /code/entrypoint.sh
 * expose
@@ -165,9 +187,14 @@ stdin_open: true
 tty: true
 ```
 ## 环境变量
-http://blog.csdn.net/ochinchina_cn/article/details/64125216
+[网上例子](http://blog.csdn.net/ochinchina_cn/article/details/64125216)
 
-1. env_file
+**特别说明**
+1. env_file中的定义，默认就会使用.env文件，其中定义的宏可以在yml文件中生效
+2. env_file中的定义，如果使用其他文件，只能对容器中生效，yml无法访问到这些宏
+3. 如果在shell中定义，必须使用export
+
+* env_file
 默认访问.env中的变量
 ```
 env_file: .env
@@ -177,7 +204,7 @@ env_file:
   - ./apps/web.env
   - /opt/secrets.env
 ```
-1. environment
+* environment
 ```
 environment:
   RACK_ENV: development
