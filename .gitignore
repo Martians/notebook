@@ -52,3 +52,5 @@ output
 *_tmp
 .vagrant
 *.dump
+.vscode
+_book
